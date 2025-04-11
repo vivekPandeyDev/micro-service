@@ -1,0 +1,7 @@
+logging:
+  level:
+    root: INFO         
+    org.loop.troop: DEBUG
+    com.netflix.eureka: DEBUG
+    com.netflix.discovery: DEBUG
+    org.springframework.cloud.netflix.eureka: DEBUG
