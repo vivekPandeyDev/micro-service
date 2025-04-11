@@ -1,0 +1,12 @@
+spring:
+    application:
+        name: user-service
+server:
+    port: 4001        
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${DISCOVERY_SERVICE_NAME}:${DISCOVERY_SERVICE_PORT}/eureka/
+    fetch-registry: true
+    register-with-eureka: true
