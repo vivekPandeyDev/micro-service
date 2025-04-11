@@ -8,8 +8,8 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.loop</groupId>
-	<artifactId>troop</artifactId>
+	<groupId>org.loop.troop</groupId>
+	<artifactId>discovery-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>discovery-service</name>
 	<description>spring boot eureka discovery service</description>
