@@ -1,0 +1,27 @@
+# ---------- Stage 1: Build the app ----------
+FROM eclipse-temurin:21-jdk-alpine AS builder
+
+RUN apk add --no-cache maven
+
+WORKDIR /app
+
+# Copy project files
+COPY pom.xml ./
+COPY src ./src
+
+# Build the application
+RUN mvn clean package -DskipTests
+
+# ---------- Stage 2: Run the app ----------
+FROM eclipse-temurin:21-jdk-alpine
+
+WORKDIR /app
+
+# Copy only the final JAR from stage 1
+COPY --from=builder /app/target/*.jar app.jar
+
+# Expose app port
+EXPOSE 8081
+
+# Run the app
+ENTRYPOINT ["java", "-jar", "app.jar"]

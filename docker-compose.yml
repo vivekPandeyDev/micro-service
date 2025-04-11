@@ -8,6 +8,8 @@ services:
     environment:
       SERVER_PORT: ${DISCOVERY_SERVICE_PORT}
       SPRING_PROFILES_ACTIVE: dev
+    networks:
+      - app-net    
     command: mvn spring-boot:run
 
   user-service:
@@ -21,7 +23,33 @@ services:
       - ~/.m2:/root/.m2          # Cache Maven dependencies    
     environment:
       SERVER_PORT: ${USER_SERVICE_PORT}
-      DISCOVERY_SERVICE_NAME: ${DISCOVERY_SERVICE_NAME}
-      DISCOVERY_SERVICE_PORT: ${DISCOVERY_SERVICE_PORT}
+      SPRING_EUREKA_CLIENT_URL: ${SPRING_EUREKA_CLIENT_URL}
+      SPRING_CLOUD_CONFIG_URI: ${SPRING_CLOUD_CONFIG_URI}
       SPRING_PROFILES_ACTIVE: dev
+    depends_on:
+      - config-service
+    networks:
+      - app-net    
     command: mvn spring-boot:run
+
+  config-service:
+    build:
+      context: ./config-service
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "${CONFIG_SERVICE_PORT}:${CONFIG_SERVICE_PORT}"
+    volumes:
+      - ./config-service:/app      # Mount local code to container
+      - ~/.m2:/root/.m2          # Cache Maven dependencies    
+    environment:
+      SERVER_PORT: ${CONFIG_SERVICE_PORT}
+      SPRING_EUREKA_CLIENT_URL: ${SPRING_EUREKA_CLIENT_URL}
+    depends_on:
+      - discovery-service
+    networks:
+      - app-net        
+    command: mvn spring-boot:run
+
+networks:
+  app-net:
+    driver: bridge    

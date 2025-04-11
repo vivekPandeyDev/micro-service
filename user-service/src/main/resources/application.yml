@@ -1,12 +1,19 @@
+info:
+  app:
+    name: user-service
+    description: User Service Microservice
+    version: 1.0.0
+
 spring:
-    application:
-        name: user-service
+  application:
+      name: user-service
+  config:
+    import: configserver:${SPRING_CLOUD_CONFIG_URI:http://localhost:8083}
+    
 server:
     port: 8081        
 
 eureka:
   client:
-    service-url:
-      defaultZone: http://${DISCOVERY_SERVICE_NAME}:${DISCOVERY_SERVICE_PORT}/eureka/
     fetch-registry: true
     register-with-eureka: true

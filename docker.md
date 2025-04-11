@@ -74,7 +74,7 @@ docker-compose -f docker-compose.prod.yml up -d
 Builds using cached layers when possible, reducing build time.
 ```
 docker-compose -f docker-compose.prod.yml build
-docker-compose -f docker-compose.prod.yml up -d
+
 ```
 🧠 Recommended for most use cases to save time unless you’ve made major dependency changes.
 

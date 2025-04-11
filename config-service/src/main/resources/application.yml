@@ -16,20 +16,21 @@ management:
     env:
       enabled: true
 
-spring:
-  profiles:
-    active: dev
-  application:
-    name: discovery-service
 server:
-  port: 8761
+  port: 4002
+
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
-logging:
-  level:
-    root: INFO         
-    org.loop.troop: INFO  
-    org.springframework.web: ERROR  
+    service-url:
+      defaultZone: ${SPRING_EUREKA_CLIENT_URL:http://localhost:8761/eureka/}
 
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          label: main
+          uri: https://github.com/vivekPandeyDev/config
+          clone-on-start: true
