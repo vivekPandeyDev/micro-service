@@ -95,3 +95,12 @@ Force the containers to be recreated even if they already exist:
 ```
 docker-compose -f docker-compose.prod.yml up --build --force-recreate
 ```
+
+## Shutdown only infra docker compose
+```
+docker-compose -f docker-compose.infra.yml down
+```
+## Create shared network
+```
+ docker network create --driver bridge app-net
+```

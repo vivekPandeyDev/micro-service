@@ -26,6 +26,7 @@ services:
       SPRING_EUREKA_CLIENT_URL: ${SPRING_EUREKA_CLIENT_URL}
       SPRING_CLOUD_CONFIG_URI: ${SPRING_CLOUD_CONFIG_URI}
       SPRING_PROFILES_ACTIVE: dev
+      ZIPKIN_URI: ${ZIPKIN_URI}
     depends_on:
       - config-service
     networks:
@@ -52,4 +53,4 @@ services:
 
 networks:
   app-net:
-    driver: bridge    
+    external: true    

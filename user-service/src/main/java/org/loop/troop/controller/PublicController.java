@@ -9,7 +9,7 @@ public class PublicController {
     
     @GetMapping("/test")
     public String getMethodName() {
-        return new String("test string updated");
+        return new String("test string change again");
     }
     
 }

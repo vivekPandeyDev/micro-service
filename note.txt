@@ -1,0 +1,5 @@
+How to Run dev setup via docker
+Step1 : create common network 'docker network create --driver bridge app-net'
+Step2 : docker container up 'docker-compose -f docker-compose.infra.yml up -d'
+Step3 : docker build container 'docker-compose -f docker-compose.yml build --no-cache'
+Step4 : docker run container 'docker-compose -f docker-compose.yml up -d'

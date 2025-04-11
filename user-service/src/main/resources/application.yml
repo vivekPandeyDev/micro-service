@@ -9,7 +9,7 @@ spring:
       name: user-service
   config:
     import: optional:configserver:${SPRING_CLOUD_CONFIG_URI:http://localhost:8083}
-    
+
 server:
     port: 8081        
 
