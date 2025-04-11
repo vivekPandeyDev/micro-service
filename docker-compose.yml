@@ -1,0 +1,27 @@
+services:
+  discovery-service:
+    build:
+      context: ./discovery-service
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "${DISCOVERY_SERVICE_PORT}:${DISCOVERY_SERVICE_PORT}"
+    environment:
+      SERVER_PORT: ${DISCOVERY_SERVICE_PORT}
+      SPRING_PROFILES_ACTIVE: prod
+    command: mvn spring-boot:run
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "${USER_SERVICE_PORT}:${USER_SERVICE_PORT}"
+    volumes:
+      - ./user-service:/app      # Mount local code to container
+      - ~/.m2:/root/.m2          # Cache Maven dependencies    
+    environment:
+      SERVER_PORT: ${USER_SERVICE_PORT}
+      DISCOVERY_SERVICE_NAME: ${DISCOVERY_SERVICE_NAME}
+      DISCOVERY_SERVICE_PORT: ${DISCOVERY_SERVICE_PORT}
+      SPRING_PROFILES_ACTIVE: prod
+    command: mvn spring-boot:run

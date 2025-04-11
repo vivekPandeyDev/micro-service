@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  discovery-service:
+    build:
+      context: ./discovery-service
+      dockerfile: ./Dockerfile.prod
+    ports:
+      - "${DISCOVERY_SERVICE_PORT}:${DISCOVERY_SERVICE_PORT}"
+    environment:
+      SERVER_PORT: ${DISCOVERY_SERVICE_PORT}
+      SPRING_PROFILES_ACTIVE: prod
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: ./Dockerfile.prod
+    ports:
+      - "${USER_SERVICE_PORT}:${USER_SERVICE_PORT}"
+    environment:
+      SERVER_PORT: ${USER_SERVICE_PORT}
+      DISCOVERY_SERVICE_NAME: ${DISCOVERY_SERVICE_NAME}
+      DISCOVERY_SERVICE_PORT: ${DISCOVERY_SERVICE_PORT}
+      SPRING_PROFILES_ACTIVE: prod
