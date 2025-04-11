@@ -7,7 +7,7 @@ services:
       - "${DISCOVERY_SERVICE_PORT}:${DISCOVERY_SERVICE_PORT}"
     environment:
       SERVER_PORT: ${DISCOVERY_SERVICE_PORT}
-      SPRING_PROFILES_ACTIVE: prod
+      SPRING_PROFILES_ACTIVE: dev
     command: mvn spring-boot:run
 
   user-service:
@@ -23,5 +23,5 @@ services:
       SERVER_PORT: ${USER_SERVICE_PORT}
       DISCOVERY_SERVICE_NAME: ${DISCOVERY_SERVICE_NAME}
       DISCOVERY_SERVICE_PORT: ${DISCOVERY_SERVICE_PORT}
-      SPRING_PROFILES_ACTIVE: prod
+      SPRING_PROFILES_ACTIVE: dev
     command: mvn spring-boot:run
