@@ -18,6 +18,7 @@ services:
       dockerfile: ./Dockerfile.dev
     ports:
       - "${USER_SERVICE_PORT}:${USER_SERVICE_PORT}"
+      - "5005:5005"
     volumes:
       - ./user-service:/app      # Mount local code to container
       - ~/.m2:/root/.m2          # Cache Maven dependencies    
@@ -34,7 +35,7 @@ services:
       - config-service
     networks:
       - app-net    
-    command: mvn spring-boot:run
+    command: mvn spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
 
   config-service:
     build:
