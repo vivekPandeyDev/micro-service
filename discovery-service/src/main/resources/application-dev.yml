@@ -1,3 +1,6 @@
+info:
+  app:
+    description: config Service Microservice dev steup
 logging:
   level:
     root: INFO         

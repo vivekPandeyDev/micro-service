@@ -27,6 +27,9 @@ services:
       SPRING_CLOUD_CONFIG_URI: ${SPRING_CLOUD_CONFIG_URI}
       SPRING_PROFILES_ACTIVE: dev
       ZIPKIN_URI: ${ZIPKIN_URI}
+      DB_URI: ${DB_URI}
+      KAFKA_SERVER: ${KAFKA_SERVER}
+      MINIO_URI: ${MINIO_URI}
     depends_on:
       - config-service
     networks:

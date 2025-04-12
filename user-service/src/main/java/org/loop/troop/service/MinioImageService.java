@@ -1,6 +1,8 @@
 package org.loop.troop.service;
 
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URL;
 import java.util.UUID;
 
 import org.loop.troop.config.MinioConfig;
@@ -77,7 +79,7 @@ public class MinioImageService implements ImageService {
     @Override
     public String getImageUrl(String fileName) {
         try {
-            // Generate a presigned URL for the file
+            // Generate a  URL for the file
             String url = minioClient.getPresignedObjectUrl(
                     GetPresignedObjectUrlArgs.builder()
                             .bucket(minioConfig.getBucketName())

@@ -17,16 +17,16 @@ management:
       enabled: true
 
 spring:
-  profiles:
-    active: dev
   application:
     name: discovery-service
+
 server:
   port: 8761
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+
 logging:
   level:
     root: INFO         

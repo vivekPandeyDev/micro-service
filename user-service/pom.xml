@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.loop.troop</groupId>
-	<artifactId>micro-service</artifactId>
+	<artifactId>user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user-service</name>
 	<description>spring boot eureka user service</description>
@@ -115,6 +115,12 @@
 			<version>8.5.7</version>
 		</dependency>
 		<!-- minio end -->
+		<!-- kafka start -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+	  <!-- kafka end -->
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
