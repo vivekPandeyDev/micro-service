@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.loop.troop.dto.RegisterDto;
 import org.loop.troop.dto.UserDto;
+import org.loop.troop.event.UserEventService;
 import org.loop.troop.response.ApiResponse;
 import org.loop.troop.service.ImageService;
 import org.loop.troop.service.UserService;

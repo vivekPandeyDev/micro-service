@@ -8,9 +8,6 @@ import org.loop.troop.event.user.UserDeletedEvent;
 import org.loop.troop.event.user.UserEvent;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -35,11 +32,10 @@ public class UserEventService {
 
     public void deleteUser(String userId) {
         UserDeletedEvent event = new UserDeletedEvent(userId);
-
         sendEvent(event);
     }
 
-    private  void sendEvent(UserEvent userEvent) {
+    private void sendEvent(UserEvent userEvent) {
         try {
             String json = objectMapper.writeValueAsString(userEvent);
             kafkaTemplate.send(topic, json);
