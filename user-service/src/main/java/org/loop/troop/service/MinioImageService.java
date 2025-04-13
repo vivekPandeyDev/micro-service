@@ -45,7 +45,7 @@ public class MinioImageService implements ImageService {
             }
         } catch (Exception e) {
             throw new ServiceException("Failed to initialize Minio client", HttpStatus.INTERNAL_SERVER_ERROR,
-                    "Minio Initialization Error");
+                    e.getMessage());
         }
     }
 
